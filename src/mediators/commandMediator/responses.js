@@ -1,6 +1,7 @@
-const responses = {
-    commandNotFound: <div>command not found</div>,
-    blank: <div/>
+const ResponseTypes = {
+    COMMAND_NOT_FOUND: <div>command not found</div>,
+    BLANK: <div/>,
+    CLEAR: <div>CLEAR</div>,
 };
 
-export default responses;
+export default ResponseTypes;

@@ -1,19 +1,19 @@
 import commandParser from "./commandParser";
-import responses from "./responses";
+import ResponseTypes from "./responses";
 import helpCMD from 'src/commands/helpCMD';
-// import lsCMD from 'src/commands/lsCMD';
-import commandTypes from 'src/commands/types';
+import CommandTypes from 'src/commands/types';
 
 const commandMediator = (command) => {
     let [cmd, args] = commandParser(command);
-    if (cmd === '') return responses.blank;
-    let output = responses.commandNotFound;
+    if (cmd === '') return ResponseTypes.BLANK;
+    let output = ResponseTypes.COMMAND_NOT_FOUND;
     switch(cmd) {
-        case commandTypes.HELP:
+        case CommandTypes.HELP:
+        case CommandTypes.LS:
             output = helpCMD(...args);
             break;
-        case commandTypes.LS:
-            output = helpCMD(...args);
+        case CommandTypes.CLEAR:
+            output = ResponseTypes.CLEAR;
             break;
         default:
     }

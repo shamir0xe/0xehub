@@ -1,8 +1,9 @@
 const commands = {
-    LS: 'ls',
-    MESSAGE: 'message',
-    PWD: 'pwd',
     HELP: 'help',
+    LS: 'ls',
+    CLEAR: 'clear',
+    MESSAGE: 'message',
+    COWSAY: 'cowsay',
     ABOUT_ME: 'about_me',
     YOUTUBE: 'youtube',
     MAIL: 'mail',
@@ -11,8 +12,6 @@ const commands = {
     LOGIN: 'login',
     REGISTER: 'register',
     CV: 'cv',
-    CLEAR: 'clear',
-    COWSAY: 'cowsay',
 };
 
 export default commands;

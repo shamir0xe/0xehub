@@ -4,6 +4,7 @@ import Terminal from "src/components/pages/terminal";
 import Console from "src/helpers/terminals/viTerminal";
 import commandMediator from "src/mediators/commandMediator";
 import TypeSetterMediator from "src/mediators/TypeSetterMediator";
+import ResponseTypes from "src/mediators/commandMediator/responses";
 
 function App() {
     const terminalRef = useRef(null);
@@ -26,11 +27,17 @@ function App() {
             cursorRef: cursorRef,
             onClick: delayAnimation,
             onLineEnd: (command) => {
-                setCommands((commands) => [...commands, command]);
-                setResponses((responses) => [
-                    ...responses,
-                    commandMediator(command),
-                ]);
+                let response = commandMediator(command);
+                if (response === ResponseTypes.CLEAR) {
+                    setCommands((commands) => []);
+                    setResponses((responses) => []);
+                } else {
+                    setCommands((commands) => [...commands, command]);
+                    setResponses((responses) => [
+                        ...responses,
+                        commandMediator(command),
+                    ]);
+                }
             },
         });
         TypeSetterMediator.initialize(virtualKeyPress);
