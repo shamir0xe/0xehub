@@ -1,0 +1,15 @@
+.Container {
+    position: relative;
+}
+
+.Container > h1 {
+    padding-left: 50px;
+}
+
+.Command {
+    background-color: var(--code-color);
+    color: var(--background-color);
+    border-radius: 5px;
+    border-color: transparent;
+    cursor: pointer;
+}

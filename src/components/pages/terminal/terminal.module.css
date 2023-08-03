@@ -1,0 +1,59 @@
+.Section {
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    max-width: calc(100vh * var(--slope));
+    background-color: var(--background-color);
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--code-color);
+    font-family: var(--code-font);
+    overflow-y: auto;
+}
+
+.Terminal {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background-color: brown;
+    display: table;
+}
+
+.CurrentLine {
+    width: 100%;
+    z-index: -1;
+}
+
+.Leading {
+    display: table-cell;
+    width: 3ch;
+    vertical-align: bottom;
+}
+
+.Wrapper {
+    display: table-cell;
+    vertical-align: bottom;
+    position: relative;
+    min-width: 1ch;
+}
+
+.Cursor {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 1ch;
+    height: 2ch;
+    background-color: white;
+    animation: blinking 1.5s steps(2) infinite;
+}
+
+.StopAnimation {
+    animation: none !important;
+    opacity: 0.5;
+}
+
+@keyframes blinking {
+    0% {
+        opacity: 0;
+    }
+}
