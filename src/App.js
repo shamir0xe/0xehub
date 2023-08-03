@@ -3,7 +3,7 @@ import classes from "./app.module.css";
 import Terminal from "src/components/pages/terminal";
 import Console from "src/helpers/terminals/viTerminal";
 import commandMediator from "src/mediators/commandMediator";
-import TypeMediator from "src/mediators/TypeMediator";
+import TypeSetterMediator from "src/mediators/TypeSetterMediator";
 
 function App() {
     const terminalRef = useRef(null);
@@ -27,10 +27,15 @@ function App() {
             onClick: delayAnimation,
             onLineEnd: (command) => {
                 setCommands((commands) => [...commands, command]);
-                setResponses((responses) => [...responses, commandMediator(command)]);
+                setResponses((responses) => [
+                    ...responses,
+                    commandMediator(command),
+                ]);
             },
         });
-        TypeMediator.initialize(virtualKeyPress);
+        TypeSetterMediator.initialize(virtualKeyPress);
+        // TODO, remove this
+        setTimeout(() => TypeSetterMediator.enter("help"), 500);
         return () => {
             return closure();
         };
